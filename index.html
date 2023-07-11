@@ -1,76 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <style>
-        .container {
-            display: flex;
-            height: 100vh;
-        }
-        .left {
-            background-color: gray;
-            width: 50%;
-        }
-        .right {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background-color: white;
-            width: 50%;
-        }
-        .chat-input-container {
-            display: flex;
-            gap: 10px;
-        }
-    </style>
-    <script>
-
-        function send() {
-            const inputbox = document.getElementById("inputbox");
-            const message = inputbox.value;
-            if (message.length < 1) {
-                window.alert("Your message must have at least one letter")
-                return;
-            }
-
-            addMessageRow(message, false);
-            inputbox.value = "";
-            const url = '/chat';
-            const fetchChat = (async () => {
-                const response = await fetch(url);
-                const data = await response.json();
-                addMessageRow(data.hello, true);
-            });
-            fetchChat();
-        }
-
-        function addMessageRow(message, isServer) {
-            const messagesTable = document.getElementById("messages");
-            const row = messagesTable.insertRow(-1);
-            const messageCell = row.insertCell(-1);
-            if (isServer) {
-                messageCell.innerHTML = message;
-            } else {
-                messageCell.innerHTML = `<b>${message}</b>`;
-            }
-        }
-
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parrotflow</title>
+  <link rel="icon" href="resources/favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="resources/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="resources/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="resources/favicon/favicon-16x16.png">
+  <link rel="manifest" href="resources/favicon/site.webmanifest">
+  <script type="module" src="script.js" async></script>
+  <meta property="og:url" content="https://chat.parrotlfow.com">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Parrotflow">
+  <meta property="og:description" content="Superhuman for ChatGPT">
+  <meta property="og:image" content="resources/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="parrotlfow.com">
+  <meta property="twitter:url" content="https://parrotlfow.com">
+  <meta name="twitter:title" content="Parrotflow">
+  <meta name="twitter:description" content="Superhuman for ChatGPT">
+  <meta name="twitter:image" content="resources/og-image.png">
+  <meta name="twitter:site" content="@jamessjackson">
+  <style>
+    body {
+      margin: 0;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      background-image: url("resources/blur.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color: #3E5857;
+    }
+    #container {
+      margin: 15px;
+      overflow-x: hidden;
+    }
+    button {
+      border: none;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0);
+    }
+    pre {
+      white-space: pre-wrap;
+      line-height: 2;
+    }
+    textarea {
+      width: 75%;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      margin: 10px;
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <div class="left">
-            <span>Input your data</span><br>
-            <textarea></textarea>
-        </div>
-        <div class="right">
-            <table id="messages"></table>
-            <div class="chat-input-container">
-                <input id="inputbox" type="text" name="" value="" placeholder="Send a message">
-                <button id="send" onclick=send()>Send</button>
-            </div>
-        </div>
+  <div id="container">
+    <div id="banner">
+      <div id="spacer"></div>
+      <div id="toolbar">
+        <a href="https://parrotflow.com/shortcut">
+          <button>
+            <img src="resources/badges/shortcut.svg" alt="">
+          </button>
+        </a>
+        <a href="https://parrotflow.com">
+          <button>
+            <img src="resources/badges/safari.svg" alt="">
+          </button>
+        </a>
+        <button id="keyboard-shortcuts">
+          <img src="resources/badges/keyboard.svg" alt="">
+        </button>
+
+        <a href="https://github.com/jsj/parrotflow">
+          <button>
+            <img src="resources/badges/star.svg" alt="">
+          </button>
+        </a>
+      </div>
     </div>
+    <div>
+      <pre>
+        <div id="messages"></div>
+      </pre>
+      <textarea id="prompt" placeholder="Send a message"></textarea>
+    </div>
+  </div>
 </body>
 </html>
