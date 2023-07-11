@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .left {
+            background-color: gray;
+            width: 50%;
+        }
+        .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: white;
+            width: 50%;
+        }
+        .chat-input-container {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+    <script>
+
+        function send() {
+            const inputbox = document.getElementById("inputbox");
+            const message = inputbox.value;
+            if (message.length < 1) {
+                window.alert("Your message must have at least one letter")
+                return;
+            }
+
+            addMessageRow(message, false);
+            inputbox.value = "";
+            const url = '/chat';
+            const fetchChat = (async () => {
+                const response = await fetch(url);
+                const data = await response.json();
+                addMessageRow(data.hello, true);
+            });
+            fetchChat();
+        }
+
+        function addMessageRow(message, isServer) {
+            const messagesTable = document.getElementById("messages");
+            const row = messagesTable.insertRow(-1);
+            const messageCell = row.insertCell(-1);
+            if (isServer) {
+                messageCell.innerHTML = message;
+            } else {
+                messageCell.innerHTML = `<b>${message}</b>`;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <span>Input your data</span><br>
+            <textarea></textarea>
+        </div>
+        <div class="right">
+            <table id="messages"></table>
+            <div class="chat-input-container">
+                <input id="inputbox" type="text" name="" value="" placeholder="Send a message">
+                <button id="send" onclick=send()>Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
