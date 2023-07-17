@@ -10,12 +10,17 @@ export async function onRequest(context) {
         throw "Invalid request parameters"
     }
 
+    const isServiced = ["US", "CA"].includes(request.cf.country);
+    if (!isServiced) {
+        throw "Invalid origin country";
+    }
+    
     const systemPrompt = `
     You are Parrotflow. You are an intelligent and helpful assistant.
     You never make things up. If you don't have the answer to a real-time question, 
     suggest they Google it for real-time info.
     `;
-    
+
     return fetch(API_URL, {
         method: "POST",
         headers: {
@@ -23,7 +28,7 @@ export async function onRequest(context) {
             Authorization: `Bearer ${context.env.OPENAI_API_KEY}`,
         },
         body: JSON.stringify({
-            model: "gpt-3.5-turbo",
+            model: "gpt-4",
             messages: [ { role: "system", content: systemPrompt }, ...messages],
             stream: true,
         })
