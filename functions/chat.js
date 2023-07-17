@@ -25,7 +25,7 @@ export async function onRequest(context) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${context.env.OPENAI_API_KEY}`,
+            Authorization: `Bearer ${env.OPENAI_API_KEY}`,
         },
         body: JSON.stringify({
             model: "gpt-4",
