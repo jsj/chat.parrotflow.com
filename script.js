@@ -158,3 +158,14 @@ promptElement.addEventListener('input', (event) => {
   promptElement.style.height = 'auto';
   promptElement.style.height = promptElement.scrollHeight + 'px';
 });
+
+window.onload = function () {
+  var isChrome = /Chrome/.test(navigator.userAgent);
+  if (isChrome) {
+    var element = document.getElementById("safari-extension");
+    element.style.display = 'none';
+  } else {
+    var element = document.getElementById("chrome-extension");
+    element.style.display = 'none';
+  }
+}

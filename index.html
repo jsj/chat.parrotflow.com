@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,18 +10,11 @@
   <link rel="icon" type="image/png" sizes="16x16" href="resources/favicon/favicon-16x16.png">
   <link rel="manifest" href="resources/favicon/site.webmanifest">
   <script type="module" src="script.js" async></script>
-  <meta property="og:url" content="https://chat.parrotlfow.com">
+  <meta property="og:url" content="https://parrotlfow.com">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Parrotflow">
   <meta property="og:description" content="Superhuman for ChatGPT">
-  <meta property="og:image" content="resources/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="twitter:domain" content="parrotlfow.com">
-  <meta property="twitter:url" content="https://parrotlfow.com">
-  <meta name="twitter:title" content="Parrotflow">
-  <meta name="twitter:description" content="Superhuman for ChatGPT">
-  <meta name="twitter:image" content="resources/og-image.png">
-  <meta name="twitter:site" content="@jamessjackson">
+  <meta property="og:image" content="resources/og.png">
   <style>
     body {
       margin: 0;
@@ -46,6 +38,7 @@
     pre {
       white-space: pre-wrap;
       line-height: 2;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
     textarea {
       width: 75%;
@@ -53,6 +46,10 @@
       background-color: rgba(255, 255, 255, 0.1);
       border: none;
       margin: 10px;
+      border-radius: 10px;
+      padding-left: 10px;
+      padding-top: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
     a {
       text-decoration: none;
@@ -66,21 +63,25 @@
       <div id="toolbar">
         <a href="https://parrotflow.com/shortcut">
           <button>
-            <img src="resources/badges/shortcut.svg" alt="">
+            <img src="resources/badges/apple-shortcut.svg" alt="">
           </button>
         </a>
-        <a href="https://parrotflow.com">
+        <a href="https://parrotflow.com" id="safari-extension">
           <button>
-            <img src="resources/badges/safari.svg" alt="">
+            <img src="resources/badges/safari-extension.svg" alt="">
+          </button>
+        </a>
+        <a href="https://parrotflow.com" id="chrome-extension">
+          <button>
+            <img src="resources/badges/chrome-extension.svg" alt="">
           </button>
         </a>
         <button id="keyboard-shortcuts">
-          <img src="resources/badges/keyboard.svg" alt="">
+          <img src="resources/badges/keyboard-shortcuts.svg" alt="">
         </button>
-
         <a href="https://github.com/jsj/parrotflow">
           <button>
-            <img src="resources/badges/star.svg" alt="">
+            <img src="resources/badges/github-star.svg" alt="">
           </button>
         </a>
       </div>
