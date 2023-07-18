@@ -144,7 +144,13 @@ keyboardShortcutElement.addEventListener("click", (event) => {
   alert(`${title} \n ${message}`);
 });
 
+promptElement.addEventListener('input', (event) => {
+  promptElement.style.height = 'auto';
+  promptElement.style.height = promptElement.scrollHeight + 'px';
+});
+
 window.onload = function () {
+  
   const urlComponents = document.URL.split("?p=");
   if (urlComponents.length > 1) {
     const contextParameter = decodeURIComponent(urlComponents[1]);
@@ -152,14 +158,7 @@ window.onload = function () {
     promptElement.value = decodedParameter;
   }
   promptElement.focus();
-}
 
-promptElement.addEventListener('input', (event) => {
-  promptElement.style.height = 'auto';
-  promptElement.style.height = promptElement.scrollHeight + 'px';
-});
-
-window.onload = function () {
   var isChrome = /Chrome/.test(navigator.userAgent);
   if (isChrome) {
     var element = document.getElementById("safari-extension");
