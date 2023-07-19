@@ -150,7 +150,6 @@ promptElement.addEventListener('input', (event) => {
 });
 
 window.onload = function () {
-  
   const urlComponents = document.URL.split("?p=");
   if (urlComponents.length > 1) {
     const contextParameter = decodeURIComponent(urlComponents[1]);
@@ -158,13 +157,4 @@ window.onload = function () {
     promptElement.value = decodedParameter;
   }
   promptElement.focus();
-
-  var isChrome = /Chrome/.test(navigator.userAgent);
-  if (isChrome) {
-    var element = document.getElementById("safari-extension");
-    element.style.display = 'none';
-  } else {
-    var element = document.getElementById("chrome-extension");
-    element.style.display = 'none';
-  }
 }
